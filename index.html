@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Pizza of Ratatuy</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head><body>
+<canvas id="c" width="960" height="540"></canvas>
+
+<!-- 1. ЯДРО (порядок важен, не менять) -->
+<script src="js/core/registry.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/core/draw.js"></script>
+<script src="js/core/audio.js"></script>
+<script src="js/core/save.js"></script>
+<script src="js/core/ai.js"></script>
+<script src="js/core/night.js"></script>
+
+<!-- 2. СЦЕНЫ -->
+<script src="js/scenes/office.js"></script>
+<script src="js/scenes/cameras.js"></script>
+<script src="js/scenes/menu.js"></script>
+<script src="js/scenes/select.js"></script>
+<script src="js/scenes/challenges.js"></script>
+<script src="js/scenes/extra.js"></script>
+<script src="js/scenes/tower.js"></script>
+<script src="js/scenes/endings.js"></script>
+<script src="js/input.js"></script>
+
+<!-- 3. ОБЩЕЕ ДЛЯ АНИМАТРОНИКОВ (группы и готовые поведения) -->
+<script src="js/shared/groups.js"></script>
+<script src="js/shared/walker.js"></script>
+
+<!-- 4. АНИМАТРОНИКИ. Порядок строк = порядок в меню выбора.
+        НОВОГО АНИМАТРОНИКА ДОБАВЛЯТЬ ОДНОЙ СТРОКОЙ В КОНЕЦ СПИСКА (перед маркером). -->
+<script src="animatronics/rat.js"></script>
+<script src="animatronics/crab.js"></script>
+<script src="animatronics/carp.js"></script>
+<script src="animatronics/bvr.js"></script>
+<script src="animatronics/proto.js"></script>
+<script src="animatronics/knight.js"></script>
+<script src="animatronics/minituy.js"></script>
+<script src="animatronics/mage.js"></script>
+<script src="animatronics/dolphin.js"></script>
+<script src="animatronics/neocrab.js"></script>
+<script src="animatronics/trap.js"></script>
+<script src="animatronics/glitch.js"></script>
+<script src="animatronics/rockstar.js"></script>
+<script src="animatronics/rbvr.js"></script>
+<script src="animatronics/rcrab.js"></script>
+<script src="animatronics/rcarp.js"></script>
+<script src="animatronics/toyraccoon.js"></script>
+<script src="animatronics/toybvr.js"></script>
+<script src="animatronics/toyrat.js"></script>
+<!-- ↑↑↑ НОВЫЕ АНИМАТРОНИКИ ДОБАВЛЯТЬ ВЫШЕ ЭТОЙ СТРОКИ ↑↑↑ -->
+
+<!-- 5. ЗАПУСК (всегда последним) -->
+<script src="js/main.js"></script>
+</body></html>
