@@ -6,6 +6,14 @@ function mainRoom(){
  g.fillStyle='#161d33';
  for(let i=0;i<8;i++)for(let j=0;j<3;j++)if((i+j)%2===0)g.fillRect(235+i*61,255+j*27,61,27);
  g.fillStyle=C.cheese;g.beginPath();g.arc(650,125,24,0,7);g.fill();
+ // гирлянда лампочек под потолком окна
+ for(let i=0;i<7;i++){const lx=265+i*70,ly=92+Math.sin(i*1.1)*4;
+  bulbLight(lx,ly,60,i*1.7);g.fillStyle=i%2?'#ffd27a':'#ff9d5c';g.beginPath();g.arc(lx,ly,4.5,0,7);g.fill()}
+ g.strokeStyle='#241a10';g.lineWidth=2;g.beginPath();
+ for(let i=0;i<=6;i++){const t=i/6,x=265+t*420,y=88+Math.sin(t*6.6)*6;i?g.lineTo(x,y):g.moveTo(x,y)}g.stroke();
+ // тёплые тени на полу
+ g.fillStyle='rgba(0,0,0,.22)';g.beginPath();g.ellipse(300,398,150,12,0,0,7);g.fill();
+ g.beginPath();g.ellipse(640,398,120,10,0,0,7);g.fill();
  // аниматроники за окном (всё обрезается рамкой окна)
  g.save();g.beginPath();g.rect(235,75,490,260);g.clip();callHook('drawWindow');g.restore();
  g.fillStyle='#5a3322';g.fillRect(472,75,16,260);g.fillRect(235,195,490,14);
@@ -14,6 +22,10 @@ function mainRoom(){
  rr(60,110,110,150,6);g.fillStyle=C.cream;g.fill();
  txt('Pizza',115,140,22,C.red,'center','bold');txt('🐀',115,200,50,C.cream,'center');
  txt('🍕',140,462,56,C.cream,'center');txt('🥤',820,462,50,C.cream,'center');
+ // блики на столе и пылинки в свете лампы
+ g.fillStyle='rgba(255,230,170,.06)';rr(60,110,110,10,4);g.fill();
+ g.fillStyle='rgba(255,235,190,.10)';
+ for(let i=0;i<10;i++){const px=240+(i*97+S.fk)%480,py=120+(i*53+Math.sin(((S.t||0)/900)+i)*22)%200;g.fillRect(px,py,2,2)}
  callHook('drawOffice');
 }
 function sideRoom(id){
@@ -43,6 +55,10 @@ function sideRoom(id){
   if(dh>40){g.fillStyle=C.red;g.beginPath();g.arc(dx+dw/2,104,9,0,7);g.fill()}
  }
  txt(right?'Правая дверь':'Левая дверь',dx+dw/2,455,20,C.cream,'center');
+ // лампа над дверью и тень от неё на полу
+ bulbLight(dx+dw/2,74,120,right?2.2:.6);
+ g.fillStyle='#3a2015';g.beginPath();g.ellipse(dx+dw/2,72,26,9,0,0,7);g.fill();
+ g.fillStyle='rgba(255,200,120,.05)';g.beginPath();g.moveTo(dx+dw/2-30,80);g.lineTo(dx+dw/2+30,80);g.lineTo(dx+dw/2+dw/2+40,418);g.lineTo(dx+dw/2-dw/2-40,418);g.closePath();g.fill();
 }
 function backRoom(){
  g.fillStyle='#1b1512';g.fillRect(0,0,W,H);

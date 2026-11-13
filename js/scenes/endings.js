@@ -14,7 +14,13 @@ function drawEnd(win){
 }
 function drawScare(dt){
  const sc=S.scare;sc.t+=dt;const k=Math.min(1,sc.t/1200);
- g.fillStyle=Math.floor(sc.t/60)%2?'#300':'#000';g.fillRect(0,0,W,H);
+ g.save();g.translate((Math.random()-.5)*14*k,(Math.random()-.5)*14*k);
+ g.fillStyle=Math.floor(sc.t/60)%2?'#300':'#000';g.fillRect(-20,-20,W+40,H+40);
+ if(sc.t<120){g.fillStyle='rgba(255,255,255,.85)';g.fillRect(-20,-20,W+40,H+40)}
+ g.save();g.shadowColor='#ff2020';g.shadowBlur=60;
  txt(sc.a.icon,W/2+(Math.random()-.5)*30,H/2+(Math.random()-.5)*30,220+300*k,C.cream,'center');
+ g.restore();
+ g.globalCompositeOperation='difference';g.fillStyle='rgba(255,0,60,'+(.25+.2*Math.sin(sc.t/40)).toFixed(2)+')';g.fillRect(-20,-20,W+40,H+40);
+ g.restore();
  if(sc.t>=1400){const d=sc.done;S.scare=null;d()}
 }
