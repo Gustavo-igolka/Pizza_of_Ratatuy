@@ -8,7 +8,8 @@
 ```
 index.html               — холст и список подключаемых скриптов
 css/style.css
-js/core/                 — ядро: реестр, состояние, рисование, звук, сохранение, ИИ-движок, ночь
+js/core/                 — ядро: реестр, состояние, рисование, постобработка (gfx.js), звук, сохранение, ИИ-движок, ночь
+media/                   — ТВОИ музыка и звуки (см. media/README.md); чего нет — играет синтез
 js/scenes/               — экраны: офис, камеры, меню, выбор, экстра, башня, концовки
 js/shared/groups.js      — группы аниматроников (Рок-стары, Toy)
 js/shared/walker.js      — готовое поведение «ходок» (Рататуй, Краб, Карась)
@@ -46,7 +47,9 @@ animatronics/example-template.js — шаблон (не подключён)
 | `say(текст)` / `sub(текст,мс)` | подсказка сверху / субтитры внизу |
 | `doorClosed('left'/'right')`, `doorHeld(side)`, `windowBusy(o)` | двери и окно |
 | `chance(diff)`, `diffLerp(d,лёгкая,сложная)`, `jitter()`, `pickOf(arr)` | сложность и случайность |
-| `SFX.knock/door/buzz/step/scare...` | звуки |
+| `SFX.knock/door/buzz/step/scare/alarm...` | звуки (сначала твой файл из `media/`, иначе синтез) |
+| `bulbLight(x,y,r,seed)` / `neonTitle(...)` | мерцающая лампа / неоновая вывеска (`js/core/gfx.js`) |
+| `drawFX(dt)` | постобработка кадра: зерно, виньетка, CRT-развертка |
 | `txt, rr, btn, g, mx, my, hits` | рисование и мышь |
 | `LOC` | индексы камер: `left:0, right:1, hall:2, prize:3, parts:4` |
 

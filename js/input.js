@@ -5,10 +5,25 @@ function turn(d){
  S.anim={from,to:side(),d,t:0};SFX.turn();
 }
 function pos(e){const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*W/r.width;my=(e.clientY-r.top)*H/r.height}
+let volDrag=null;
+function volAt(e){if(!volDrag)return;const r=cv.getBoundingClientRect();
+ const x=(e.clientX-r.left)*W/r.width;const [bx,bw]=volDrag;setVol(volDrag[2],(x-bx)/bw)}
+// зоны ползунков на экране «Настройки звука» (координаты совпадают с drawSound в menu.js)
+function volHit(){const bx=280,bw=400;
+ if(mx>=bx-14&&mx<=bx+bw+14){
+  if(my>=215&&my<=268)return[bx,bw,'sfx'];
+  if(my>=315&&my<=368)return[bx,bw,'bgm']}
+ return null}
 cv.addEventListener('mousemove',pos);
+addEventListener('mousemove',e=>{volAt(e)});
+addEventListener('mouseup',e=>{if(e.button===0)volDrag=null});
 cv.addEventListener('mousedown',e=>{
- pos(e);ac();
- if(e.button===0){for(let i=hits.length-1;i>=0;i--){const b=hits[i];if(mx>=b.x&&mx<=b.x+b.w&&my>=b.y&&my<=b.y+b.h){SFX.click();b.fn();break}}}
+ pos(e);ac();unlockAudio();
+ if(e.button===0){
+  const vd=S.scene==='sound'?volHit():null;
+  if(vd){volDrag=vd;volAt(e);return}
+  for(let i=hits.length-1;i>=0;i--){const b=hits[i];if(mx>=b.x&&mx<=b.x+b.w&&my>=b.y&&my<=b.y+b.h){SFX.click();b.fn();break}}
+ }
  else if(e.button===2&&S.scene==='game'){
   const blk=systemsBlock();
   if(blk)return say(blk.flash||'Системы заблокированы!');
@@ -25,7 +40,7 @@ cv.addEventListener('wheel',e=>{
 },{passive:false});
 addEventListener('keydown',e=>{
  if(e.code==='Space')e.preventDefault();
- ac();
+ ac();unlockAudio();
  if(e.repeat)return;
  if(e.code==='KeyM'){toggleMute();say(S.mute?'Звук выключен':'Звук включён');return}
  if(S.scene==='game'){

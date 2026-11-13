@@ -58,6 +58,11 @@ function drawTablet(){
  txt(clockText(),W/2,26,22,C.cheese,'center','bold');
  txt('Камеры',815,72,26,C.cheese,'center','bold');
  CAMS.forEach((n,i)=>btn(705,95+i*62,220,52,(S.dist[i]?'🔊 ':'')+(i+1)+'. '+n,()=>S.cam=i,{sz:18,fill:i===S.cam?C.green:'#3a2420'}));
+ // лёгкая хроматическая аберрация поверх кадра
+ g.save();g.globalCompositeOperation='screen';g.globalAlpha=.05;g.filter='blur(1px)';
+ g.fillStyle='#ff0040';g.fillRect(32,50,650,420);
+ g.fillStyle='#00e0ff';g.fillRect(28,50,650,420);g.restore();
+ g.fillStyle='rgba(0,0,0,.35)';g.fillRect(32,50,650,6);g.fillRect(32,464,650,6);
  callHook('drawCamUI');
  btn(705,415,220,56,'Закрыть (W)',()=>S.camOpen=false,{sz:20});
  btn(30,480,300,44,'Сигнал на камере (Space)',useAlarm,{sz:18,fill:S.alarm?C.red:'#3a2420'});

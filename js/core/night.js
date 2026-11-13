@@ -46,11 +46,11 @@ function useAlarm(){
  if(!S.camOpen)return say('Сигнал подаётся с планшета камер (W)');
  if(!S.alarm)return say('Сигнализация выключена на щитке');
  if(S.alarmCd>0)return say('Сигнал перезаряжается');
- S.dist[S.cam]=1;S.distT[S.cam]=ALARM_MS;S.alarmCd=ALARM_CD;beep();callHook('onSiren',S.cam);if(S.mode==='tower'&&S.run)S.run.alarms++;
+ S.dist[S.cam]=1;S.distT[S.cam]=ALARM_MS;S.alarmCd=ALARM_CD;SFX.alarm();callHook('onSiren',S.cam);if(S.mode==='tower'&&S.run)S.run.alarms++;
 }
 function updateAlarm(dt){
  if(!S.power){S.dist.fill(0);S.alarmCd=0;return}
  S.alarmCd=Math.max(0,S.alarmCd-dt);
  for(let i=0;i<5;i++)if(S.dist[i]){S.distT[i]-=dt;if(S.distT[i]<=0)S.dist[i]=0}
 }
-function beep(){tone(880,.4,'sine',.08)}
+
