@@ -26,6 +26,11 @@ cv.addEventListener('wheel',e=>{
 addEventListener('keydown',e=>{
  if(e.code==='Space')e.preventDefault();
  ac();
+ if(S.scene==='storyEvacuation'){
+  if(S.evac&&(e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD'].includes(e.code))){e.preventDefault();S.evac.keys[e.code]=true;return}
+  if(e.code==='KeyE'){storyEvacInteract();return}
+  if(e.code==='Escape'){if(S.evac)S.evac.card=null;return}
+ }
  if(e.repeat)return;
  if(e.code==='KeyM'){toggleMute();say(S.mute?'Звук выключен':'Звук включён');return}
  if(S.scene==='game'){
@@ -42,3 +47,5 @@ addEventListener('keydown',e=>{
   else if(e.code==='Escape'){if(S.camOpen)S.camOpen=false;else S.scene='menu'}
  }else if(e.code==='Escape'&&S.scene!=='menu')S.scene='menu';
 });
+
+addEventListener('keyup',e=>{if(S.scene==='storyEvacuation'&&S.evac)S.evac.keys[e.code]=false});
