@@ -1,7 +1,7 @@
 /* ===== НОЧЬ: часы, рубильники, питание, двери, мерцание, сигнализация ===== */
 function startNight(){
  Object.assign(S,{scene:'game',ri:0,anim:null,light:true,power:true,doorL:false,doorR:false,dl:0,dr:0,cams:false,alarm:false,camOpen:false,cam:0,dist:[0,0,0,0,0],distT:[0,0,0,0,0],alarmCd:0,t:0,flash:false});
- initAI();const ch=S.mode==='tower'?{}:S.chal;HOUR_MS=ch.fast?25000:45000;MAXSW=ch.tight?2:3;if(ch.dark)S.light=false;save();
+ initAI();const ch=(S.mode==='tower'||S.mode==='story')?{}:S.chal;HOUR_MS=ch.fast?25000:45000;MAXSW=ch.tight?2:3;if(ch.dark)S.light=false;if(S.mode==='story')storySave();else save();
 }
 const onCount=()=>(S.light?1:0)+(S.cams?1:0)+(S.alarm?1:0)+(S.doorL?1:0)+(S.doorR?1:0);
 function tog(k){
@@ -15,7 +15,7 @@ function updateNight(dt){
   S.flash=false;
   const bad=(S.ai||[]).find(o=>o.a.failsNight&&o.a.failsNight(o));
   if(bad){S.killer=bad.a;if(S.mode==='tower')towerOver(false);else S.scene='lose';return}
-  if(S.mode==='tower')towerNightWon();else{S.scene='win';recordWin()}
+  if(S.mode==='tower')towerNightWon();else if(S.mode==='story')storyNightWon();else{S.scene='win';recordWin()}
  }
 }
 function clockText(){const h=Math.min(5,Math.floor(S.t/HOUR_MS));return (h===0?12:h)+':00 AM'}
