@@ -40,3 +40,20 @@ function drawStoryEnding(){
  txt('Вывезено аниматроников: '+(s.rescued||[]).length,W/2,345,20,C.cream,'center');
  btn(350,420,260,54,'Вернуться в меню',()=>{S.scene='menu';S.mode='sandbox';},{sz:20});
 }
+
+
+function drawStoryPause(){
+ checker();
+ txt('ПАУЗА',W/2,115,48,C.cheese,'center','bold');
+ txt('Story Mode · Ночь '+(S.story?.night||1),W/2,165,19,C.cream,'center');
+ btn(350,230,260,58,'Продолжить',()=>{
+  S.scene=S.storyPauseReturn||'game';
+  S.storyPauseReturn=null;
+ },{fill:C.green,sz:21});
+ btn(350,310,260,58,'Сохранить и выйти',()=>{
+  storySave();
+  S.mode='sandbox';
+  S.storyPauseReturn=null;
+  S.scene='menu';
+ },{sz:20});
+}
