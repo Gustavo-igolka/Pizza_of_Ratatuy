@@ -6,11 +6,13 @@ function drawMenu(){
  txt('Pizza of Ratatuy',W/2,225,68,C.cheese,'center','bold');
  txt('пародия на ночные смены',W/2,278,22,C.cream,'center');
  txt('💵 Баланс: $'+(S.money||0),W-24,24,18,C.cheese,'right','bold');
- btn(380,296,200,52,'Песочница',()=>{S.mode='sandbox';S.scene='select'});
- btn(380,356,200,52,'Башня',startTower);
- btn(380,416,200,52,'Экстра',()=>{S.xsel=0;S.xscroll=0;S.scene='extra'});
+ btn(380,266,200,48,'Story Mode',()=>S.scene='storySelect',{fill:C.green,sz:22});
+ if(S.story&&!S.story.completed)btn(600,266,200,48,'Продолжить',storyResume,{sz:18});
+ btn(380,322,200,48,'Песочница',()=>{S.mode='sandbox';S.scene='select'});
+ btn(380,378,200,48,'Башня',startTower);
+ btn(380,434,200,48,'Экстра',()=>{S.xsel=0;S.xscroll=0;S.scene='extra'});
  btn(860,486,76,40,S.mute?'🔇':'🔊',toggleMute,{sz:20});
- btn(380,476,200,52,'Выход',()=>{S.scene='exit';try{window.close()}catch(e){}});
+ btn(380,490,200,42,'Выход',()=>{S.scene='exit';try{window.close()}catch(e){}});
 }
 function drawExit(){
  checker();
