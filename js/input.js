@@ -29,7 +29,18 @@ addEventListener('keydown',e=>{
  if(S.scene==='storyEvacuation'){
   if(S.evac&&(e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD'].includes(e.code))){e.preventDefault();S.evac.keys[e.code]=true;return}
   if(e.code==='KeyE'){storyEvacInteract();return}
-  if(e.code==='Escape'){if(S.evac)S.evac.card=null;return}
+  if(e.code==='Escape'){
+   if(S.evac&&S.evac.card)S.evac.card=null;
+   else{S.storyPauseReturn='storyEvacuation';S.scene='storyPause'}
+   return;
+  }
+ }
+ if(S.scene==='game'&&S.mode==='story'&&e.code==='Escape'){
+  if(S.camOpen){S.camOpen=false;return}
+  S.storyPauseReturn='game';S.scene='storyPause';return;
+ }
+ if(S.scene==='storyPause'&&e.code==='Escape'){
+  S.scene=S.storyPauseReturn||'game';S.storyPauseReturn=null;return;
  }
  if(e.repeat)return;
  if(e.code==='KeyM'){toggleMute();say(S.mute?'Звук выключен':'Звук включён');return}
