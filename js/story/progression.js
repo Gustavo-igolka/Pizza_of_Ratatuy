@@ -7,7 +7,7 @@ function storyLoad(){
  try{
   const raw=JSON.parse(localStorage.getItem(STORY_SAVE_KEY)||'null');
   if(!raw||!STORY_CHARACTERS.some(c=>c.id===raw.character))return;
-  S.story=Object.assign({chapter:'intro',night:1,evacuations:[],rescued:[],completed:false,ending:null,activeIds:STORY_INITIAL_ROSTER.slice()},raw);
+  S.story=Object.assign({chapter:'intro',night:1,evacuationIndex:0,evacuations:[],rescued:[],completed:false,ending:null,activeIds:STORY_INITIAL_ROSTER.slice(),nightsCleared:0},raw);
  }catch(e){console.warn('Story save load failed',e)}
 }
 function storyStartCampaign(characterId){
