@@ -2,6 +2,7 @@
 // Подключается последним: к этому моменту все аниматроники уже зарегистрированы.
 const SCENES={
  menu:drawMenu,select:drawSelect,exit:drawExit,chal:drawChal,extra:drawExtra,scare:drawScare,
+ storySelect:drawStorySelect,storyIntro:drawStoryIntro,storyNightResult:drawStoryNightResult,storyDialogue:drawStoryDialogue,
  tower:drawTowerHub,pick:drawPick,towerwin:drawTowerWin,towerend:drawTowerEnd,
  win:()=>drawEnd(true),lose:()=>drawEnd(false)
 };
@@ -19,4 +20,5 @@ function frame(t){
  requestAnimationFrame(frame);
 }
 load();
+storyLoad();
 requestAnimationFrame(frame);
