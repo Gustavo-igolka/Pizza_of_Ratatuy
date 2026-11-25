@@ -112,7 +112,7 @@ function drawGame(dt){
  if(!S.anim&&id===0)callHook('drawOverlay');
  // HUD
  g.fillStyle='rgba(0,0,0,.55)';g.fillRect(0,0,W,34);g.fillRect(0,H-30,W,30);
- txt(S.mode==='tower'?'Этап '+S.tower.stage+'/'+TOWER_STAGES+' · аниматроников: '+(S.ai||[]).length:'Ночь 1 · '+(S.ai||[]).map(o=>o.a.icon).join(' '),12,17,16,C.cream);
+ txt(S.mode==='tower'?'Этап '+S.tower.stage+'/'+TOWER_STAGES+' · аниматроников: '+(S.ai||[]).length:S.mode==='story'?'Story Mode · Ночь '+(S.story?.night||1)+' · '+(S.ai||[]).length+' аниматроников':'Ночь 1 · '+(S.ai||[]).map(o=>o.a.icon).join(' '),12,17,16,C.cream);
  txt(SIDE_NAMES[id],W-12,17,16,C.cheese,'right','bold');
  const blk=systemsBlock();
  txt(blk?blk.hud:'A / D — поворот · ЛКМ — кнопки · ПКМ — фонарик · W — камеры · Пробел — сигнализация · Esc — меню',W/2,H-15,14,blk?C.red:C.cream,'center',blk?'bold':'');
