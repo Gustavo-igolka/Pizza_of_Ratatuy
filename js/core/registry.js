@@ -16,6 +16,7 @@ function registerAnim(def){
  // значения по умолчанию; pay — выплата охраннику, полная стоимость в 1000 раз выше
  const a=Object.assign({diff:5,desc:'',lore:'',play:'',scare:false,pay:10},def);
  a.value=a.pay*1000;
+ a.baseDiff=a.diff; // неизменная базовая сложность для независимых режимов
  ANIMS.push(a);
  return a;
 }
