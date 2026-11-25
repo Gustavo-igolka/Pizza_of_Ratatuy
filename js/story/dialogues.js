@@ -4,6 +4,7 @@
 function storyBeginDialogue(lines,after){
  S.storyDialogue={lines:(lines||[]).slice(),index:0,shown:0,after:after||null,voice:null};
  S.scene='storyDialogue';
+ storyPlayDialogueVoice();
 }
 function storyAdvanceDialogue(){
  const d=S.storyDialogue;if(!d)return;
