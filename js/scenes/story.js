@@ -8,8 +8,8 @@ function drawStorySelect(){
   rr(x,y,w,h,12);g.fillStyle='#24130f';g.fill();g.lineWidth=3;g.strokeStyle=C.cream;g.stroke();
   txt(c.name,x+w/2,y+42,21,C.cheese,'center','bold');
   txt('Сложность: '+c.difficulty,x+w/2,y+78,16,C.cream,'center');
-  wrap(c.summary,27).forEach((line,k)=>txt(line,x+18,y+120+k*22,15,C.cream));
-  wrap(c.traits,29).forEach((line,k)=>txt(line,x+18,y+205+k*20,13,'#c9aa83'));
+  wrap(c.summary,31).forEach((line,k)=>txt(line,x+18,y+112+k*18,13,C.cream));
+  wrap(c.traits,29).forEach((line,k)=>txt(line,x+18,y+202+k*17,12,'#c9aa83'));
   btn(x+28,y+250,w-56,40,'Выбрать',()=>storyStartCampaign(c.id),{fill:C.green,sz:19});
  });
  btn(30,24,130,40,'← В меню',()=>S.scene='menu',{sz:17});
@@ -29,7 +29,7 @@ function drawStoryIntro(){
  g.fillStyle='#8a969b';g.fillRect(160,355,105,42);g.fillRect(280,355,105,42);
  g.fillStyle='#111';g.beginPath();g.arc(180,444,27,0,Math.PI*2);g.arc(370,444,27,0,Math.PI*2);g.fill();
  txt(c.name,W/2,90,25,C.cream,'center','bold');
- txt(c.summary,W/2,490,15,C.cream,'center');
+ wrap(c.summary,78).slice(0,2).forEach((line,i)=>txt(line,W/2,468+i*20,14,C.cream,'center'));
  btn(650,365,250,58,'Начать первую смену',storyStartNight,{fill:C.green,sz:20});
  btn(30,470,150,42,'← Выбор',()=>S.scene='storySelect',{sz:17});
 }
