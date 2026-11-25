@@ -5,6 +5,9 @@ const TOWER_STAGES=10,TOWER_OFFER=8,TOWER_DIFF=10;
 // Сколько аниматроников берёт игрок на каждом этапе.
 const TOWER_PICKS=[3,2,2,2,2,1,1,1,1,1];
 function activeList(){
+ if(S.mode==='story'&&S.story){
+  return (S.story.activeIds||STORY_INITIAL_ROSTER).map(id=>ANIMS.find(a=>a.id===id)).filter(Boolean).map(a=>({...a,diff:a.baseDiff}));
+ }
  return S.mode==='tower'&&S.tower?S.tower.roster.map(id=>({...ANIMS.find(x=>x.id===id),diff:TOWER_DIFF})):ANIMS.filter(a=>a.diff>0);
 }
 function startTower(){
