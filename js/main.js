@@ -1,7 +1,7 @@
 /* ===== ЗАПУСК И ГЛАВНЫЙ ЦИКЛ ===== */
 const SCENES={
  menu:drawMenu,select:drawSelect,exit:drawExit,chal:drawChal,extra:drawExtra,scare:drawScare,
- storySelect:drawStorySelect,storyIntro:drawStoryIntro,storyNightResult:drawStoryNightResult,storyDialogue:drawStoryDialogue,storyEvacuation:drawStoryEvacuation,storyEnding:drawStoryEnding,
+ storySelect:drawStorySelect,storyIntro:drawStoryIntro,storyNightResult:drawStoryNightResult,storyDialogue:drawStoryDialogue,storyEvacuation:drawStoryEvacuation,storyEnding:drawStoryEnding,storyPause:drawStoryPause,
  tower:drawTowerHub,pick:drawPick,towerwin:drawTowerWin,towerend:drawTowerEnd,win:()=>drawEnd(true),lose:()=>drawEnd(false)
 };
 let last=0;
