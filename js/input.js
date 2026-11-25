@@ -59,4 +59,4 @@ addEventListener('keydown',e=>{
  }else if(e.code==='Escape'&&S.scene!=='menu')S.scene='menu';
 });
 
-addEventListener('keyup',e=>{if(S.scene==='storyEvacuation'&&S.evac)S.evac.keys[e.code]=false});
+addEventListener('keyup',e=>{if(S.evac)S.evac.keys[e.code]=false});
