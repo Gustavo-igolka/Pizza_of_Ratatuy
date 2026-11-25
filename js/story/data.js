@@ -7,7 +7,7 @@ const STORY_CHARACTERS=[
 const STORY_VENUES={
  pizza:{name:'Pizza of Ratatuy',ids:['rat','crab','carp','bvr','proto']},
  aquapark:{name:'Аквапарк',ids:['dolphin','neocrab','minituy']},
- castle:{name:'Старый замок',ids:['knight','mage','trap','773j3']},
+ castle:{name:'Старый замок',ids:['knight','mage','trap','glitch']},
  rockstar:{name:'Rockstar-заведение',ids:['rockstar','rbvr','rcrab','rcarp']},
  toy:{name:'Toy-заведение',ids:['toyrat','toybvr','toyraccoon']}
 };
