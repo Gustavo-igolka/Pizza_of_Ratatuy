@@ -5,11 +5,11 @@ function drawEnd(win){
   txt('6:00 AM',W/2,150,80,C.cheese,'center','bold');
   txt('Ты пережил ночь!',W/2,235,36,C.cream,'center');
  }else{
-  txt('Ночь проиграна',W/2,170,52,C.red,'center','bold');
-  txt('Попробуй ещё раз',W/2,235,24,C.cream,'center');
+  txt(S.mode==='story'?'Story Mode · Ночь '+(S.story?.night||1):'Ночь проиграна',W/2,170,52,C.red,'center','bold');
+  txt(S.mode==='story'?'Эвакуации и спасённые аниматроники сохранены':'Попробуй ещё раз',W/2,235,24,C.cream,'center');
   if(S.killer)txt('Тебя настиг: '+S.killer.icon+' '+S.killer.name,W/2,290,26,C.cheese,'center','bold');
  }
- btn(330,340,300,60,win?'Ещё раз':'Заново',startNight,{fill:C.green});
+ btn(330,340,300,60,win?'Ещё раз':(S.mode==='story'?'Повторить ночь':'Заново'),startNight,{fill:C.green});
  btn(330,420,300,56,'В меню',()=>S.scene='menu',{sz:22});
 }
 function drawScare(dt){
