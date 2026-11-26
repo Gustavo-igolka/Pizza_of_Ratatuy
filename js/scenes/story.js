@@ -12,6 +12,10 @@ function drawStorySelect(){
  });
  btn(30,24,130,40,'← В меню',()=>S.scene='menu',{sz:17});
 }
+function storyBeginIntro(){
+ const lines=STORY_INTRO_DIALOGUES[S.story?.character]||[];
+ storyBeginDialogue(lines,storyStartNight);
+}
 function drawStoryIntro(){
  checker();const c=STORY_CHARACTERS.find(x=>x.id===S.story?.character);if(!c){S.scene='storySelect';return}
  txt('Прибытие',W/2,48,38,C.cheese,'center','bold');g.fillStyle='#17100e';g.fillRect(0,280,W,260);
@@ -19,7 +23,7 @@ function drawStoryIntro(){
  txt('PIZZA OF RATATUY',710,165,16,C.cheese,'center','bold');g.fillStyle='#20252a';rr(110,345,330,95,18);g.fill();g.fillStyle='#8a969b';g.fillRect(160,355,105,42);g.fillRect(280,355,105,42);
  g.fillStyle='#111';g.beginPath();g.arc(180,444,27,0,Math.PI*2);g.arc(370,444,27,0,Math.PI*2);g.fill();
  txt(c.name,W/2,90,25,C.cream,'center','bold');wrap(c.summary,78).slice(0,2).forEach((line,i)=>txt(line,W/2,468+i*20,14,C.cream,'center'));
- btn(650,365,250,58,'Начать первую смену',storyStartNight,{fill:C.green,sz:20});btn(30,470,150,42,'← Выбор',()=>S.scene='storySelect',{sz:17});
+ btn(650,365,250,58,'Продолжить',storyBeginIntro,{fill:C.green,sz:20});btn(30,470,150,42,'← Выбор',()=>S.scene='storySelect',{sz:17});
 }
 function storyCallBoss(){
  storyBeginDialogue([
