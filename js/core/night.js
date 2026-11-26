@@ -14,7 +14,7 @@ function updateNight(dt){
  if(S.t>=(S.mode==='tower'?2:6)*HOUR_MS){
   S.flash=false;
   const bad=(S.ai||[]).find(o=>o.a.failsNight&&o.a.failsNight(o));
-  if(bad){S.killer=bad.a;if(S.mode==='tower')towerOver(false);else S.scene='lose';return}
+  if(bad){S.killer=bad.a;if(S.mode==='tower')towerOver(false);else if(S.mode==='story'){S.story.nightDeaths=(S.story.nightDeaths||0)+1;storySave();S.scene='lose'}else S.scene='lose';return}
   if(S.mode==='tower')towerNightWon();else if(S.mode==='story')storyNightWon();else{S.scene='win';recordWin()}
  }
 }
