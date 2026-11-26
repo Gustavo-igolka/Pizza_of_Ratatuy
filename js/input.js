@@ -42,6 +42,10 @@ addEventListener('keydown',e=>{
  if(S.scene==='storyPause'&&e.code==='Escape'){
   S.scene=S.storyPauseReturn||'game';S.storyPauseReturn=null;return;
  }
+ if(S.scene==='storyDialogue'&&(e.code==='Enter'||e.code==='Space')){
+  if(!e.repeat)storyAdvanceDialogue();
+  return;
+ }
  if(e.repeat)return;
  if(e.code==='KeyM'){toggleMute();say(S.mute?'Звук выключен':'Звук включён');return}
  if(S.scene==='game'){
