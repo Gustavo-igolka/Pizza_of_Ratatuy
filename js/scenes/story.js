@@ -41,7 +41,7 @@ function drawStoryEnding(){
  checker();txt('КОНЕЦ ИСТОРИИ',W/2,90,44,C.cheese,'center','bold');txt('Пятая смена завершена',W/2,160,27,C.cream,'center');
  txt('ИТОГИ ЗАБЕГА',W/2,225,20,C.cheese,'center','bold');const s=S.story.ending||{};
  txt('Пройдено смен: '+(s.nightsCleared||5)+' / 5',W/2,275,20,C.cream,'center');txt('Эвакуаций: '+(s.evacuations||4)+' / 4',W/2,310,20,C.cream,'center');
- txt('Вывезено аниматроников: '+(s.rescued||[]).length,W/2,345,20,C.cream,'center');
+ txt('Вывезено аниматроников: '+(s.rescued||[]).length,W/2,345,20,C.cream,'center');txt('Смертей за кампанию: '+(s.deaths||0),W/2,380,18,C.cream,'center');
  btn(350,420,260,54,'Вернуться в меню',()=>{S.scene='menu';S.mode='sandbox';},{sz:20});
 }
 
