@@ -26,7 +26,7 @@ function storyNightWon(){
  S.story.nightsCleared=(S.story.nightsCleared||0)+1;
  if(S.story.night>=5){
   S.story.chapter='ending';S.story.completed=true;
-  S.story.ending={nightsCleared:S.story.nightsCleared,evacuations:S.story.evacuations.length,rescued:S.story.rescued.slice()};
+  S.story.ending={nightsCleared:S.story.nightsCleared,evacuations:S.story.evacuations.length,rescued:S.story.rescued.slice(),deaths:S.story.nightDeaths||0};
   storySave();S.scene='storyEnding';return;
  }
  S.story.chapter='nightResult';storySave();S.scene='storyNightResult';
